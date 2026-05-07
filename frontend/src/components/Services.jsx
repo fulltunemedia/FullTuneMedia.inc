@@ -10,7 +10,7 @@ const services = [
     price: "From $250 CAD",
     deliver: "25–40 edited frames",
     image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Bike,
@@ -21,7 +21,7 @@ const services = [
     price: "From $220 CAD",
     deliver: "20–35 edited frames",
     image:
-      "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Building2,
@@ -32,7 +32,7 @@ const services = [
     price: "From $300 CAD",
     deliver: "30+ edited frames",
     image:
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1496564203457-11bb12075d90?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: User,
@@ -43,7 +43,7 @@ const services = [
     price: "From $180 CAD",
     deliver: "15–25 edited frames",
     image:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
