@@ -61,7 +61,7 @@ export default function Footer() {
               Contact
             </div>
             <ul className="space-y-2 font-body text-sm text-zinc-300">
-              <li>hello@fulltunemedia.com</li>
+              <li>Fulltunemedia@gmail.com</li>
               <li>Hamilton, Ontario</li>
               <li>
                 <a href="https://instagram.com" className="hover:text-[#FF3B30]">

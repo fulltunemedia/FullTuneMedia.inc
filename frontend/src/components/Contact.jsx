@@ -62,7 +62,7 @@ export default function Contact() {
 
             <div className="space-y-6">
               <a
-                href="mailto:hello@fulltunemedia.com"
+                href="mailto:Fulltunemedia@gmail.com"
                 data-testid="contact-email-link"
                 className="group flex items-center gap-4 text-zinc-300 hover:text-[#FF3B30] transition-colors"
               >
@@ -73,7 +73,7 @@ export default function Contact() {
                   <div className="font-stencil text-[10px] uppercase tracking-[0.3em] text-zinc-500">
                     Email
                   </div>
-                  <div className="font-body">hello@fulltunemedia.com</div>
+                  <div className="font-body">Fulltunemedia@gmail.com</div>
                 </div>
               </a>
               <div className="flex items-center gap-4 text-zinc-300">
