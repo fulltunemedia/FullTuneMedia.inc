@@ -1,0 +1,137 @@
+{
+  "project_info": {
+    "brand_name": "FullTuneMedia",
+    "location": "Hamilton, Ontario, Canada",
+    "domain": "Portfolio / Personal Brand",
+    "theme": "Dark",
+    "archetype": "5 (Jewel & Luxury / High-End Editorial)",
+    "vibe": "Dark, cinematic, moody, automotive magazine spread crossed with a personal portfolio"
+  },
+  "design_system": {
+    "colors": {
+      "background": {
+        "primary": "#0A0A0C",
+        "secondary": "#121214",
+        "tertiary": "#1A1A1C"
+      },
+      "text": {
+        "primary": "#F8F9FA",
+        "secondary": "#A1A1AA",
+        "muted": "#71717A"
+      },
+      "accent": {
+        "primary": "#FF3B30",
+        "hover": "#FF5247",
+        "muted": "rgba(255, 59, 48, 0.1)"
+      },
+      "border": {
+        "light": "rgba(255, 255, 255, 0.05)",
+        "medium": "rgba(255, 255, 255, 0.1)"
+      }
+    },
+    "typography": {
+      "fonts": {
+        "heading": "Playfair Display, serif",
+        "subheading": "Oswald, sans-serif",
+        "body": "Manrope, sans-serif"
+      },
+      "scales": {
+        "h1": "text-5xl md:text-6xl tracking-tighter leading-none font-bold",
+        "h2": "text-3xl md:text-5xl tracking-tight leading-tight font-semibold",
+        "h3": "text-xl md:text-2xl tracking-tight font-medium",
+        "body": "text-base leading-relaxed text-zinc-400",
+        "overline": "text-xs uppercase tracking-[0.2em] font-semibold text-zinc-500"
+      },
+      "import_urls": [
+        "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Oswald:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap"
+      ]
+    },
+    "spacing": {
+      "section_padding": "py-24 md:py-32",
+      "container": "max-w-7xl mx-auto px-6 md:px-12",
+      "grid_gap": "gap-8 md:gap-12"
+    },
+    "surfaces": {
+      "glass": "bg-black/40 backdrop-blur-xl border border-white/10",
+      "card": "bg-[#121214] border border-white/5 shadow-2xl",
+      "texture": "Filmic grain overlay required on background. (e.g. SVG noise or CSS background-image with noise pattern, opacity-20)"
+    },
+    "motion": {
+      "scroll": "Lenis smooth scrolling mandatory",
+      "transitions": "framer-motion for page reveals, stagger children in grids, slow scale-up on image hover (duration: 0.8s, ease: [0.16, 1, 0.3, 1])"
+    }
+  },
+  "layout_strategies": {
+    "hero": {
+      "description": "Cinematic full-bleed or massively padded container. Use the 'Silver convertible' image as background with a heavy vignette/gradient overlay (bg-black/60 to transparent). Large Playfair Display typography offset to the bottom left. An 'overline' introducing the location 'Hamilton, ON'."
+    },
+    "portfolio_grid": {
+      "description": "Mode A: The Tetris Grid. Asymmetric. Mix of col-span-12 (hero shots), col-span-4 (portraits), and col-span-8 (wide automotive shots). Large gaps (gap-8). Hover states must subtly scale the image and reveal an accent-colored border or title."
+    },
+    "about": {
+      "description": "Editorial split layout. Left side: moody portrait of the photographer or text. Right side: heavily indented text. Break the symmetrical 50/50 split. Use 40/60. Large quotes in Playfair Display."
+    }
+  },
+  "media": {
+    "images": [
+      {
+        "category": "hero",
+        "url": "https://images.unsplash.com/photo-1770608014330-7de6ce86c69d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwzfHxjaW5lbWF0aWMlMjBzcG9ydHMlMjBjYXIlMjBuaWdodHxlbnwwfHx8fDE3NzgxOTM2MDB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Silver convertible sports car parked at night - cinematic hero background"
+      },
+      {
+        "category": "portfolio_automotive",
+        "url": "https://images.unsplash.com/photo-1753792707171-162cc17211ca?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHwxfHxjaW5lbWF0aWMlMjBzcG9ydHMlMjBjYXIlMjBuaWdodHxlbnwwfHx8fDE3NzgxOTM2MDB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Red BMW night shot"
+      },
+      {
+        "category": "portfolio_portrait",
+        "url": "https://images.pexels.com/photos/33135872/pexels-photo-33135872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Moody portrait of woman in lush dark ferns"
+      },
+      {
+        "category": "portfolio_architecture",
+        "url": "https://images.unsplash.com/photo-1689592609292-69e2344f0ff1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHwxfHxkYXJrJTIwYXJjaGl0ZWN0dXJlJTIwcGhvdG9ncmFwaHl8ZW58MHx8fHwxNzc4MTkzNjAwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Dark architecture, tall building with windows"
+      },
+      {
+        "category": "portfolio_motorcycle",
+        "url": "https://images.unsplash.com/photo-1759248762794-71a284210a55?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwzfHxjaW5lbWF0aWMlMjBtb3RvcmN5Y2xlJTIwcGhvdG9ncmFwaHklMjBkYXJrfGVufDB8fHx8MTc3ODE5MzYxOXww&ixlib=rb-4.1.0&q=85",
+        "description": "Motorcycle parked on dark street at night"
+      },
+      {
+        "category": "about_texture",
+        "url": "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E",
+        "description": "Inline SVG noise texture for filmic grain"
+      }
+    ]
+  },
+  "components": {
+    "required_libraries": [
+      "framer-motion",
+      "lucide-react",
+      "@studio-freight/lenis",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "shadcn_overrides": {
+      "button": "Minimal, sharp corners (rounded-none or rounded-sm). Primary button uses the accent color (#FF3B30). Hover states should be a bright saturated lift, not a dull grey.",
+      "tabs": "Use for portfolio filtering. Avoid default boxed look. Make them text-only with a bottom 1px active indicator in the accent color.",
+      "input": "Dark background (#121214), border-white/10. Focus state must glow with the accent color (ring-accent/50). Sharp corners."
+    }
+  },
+  "testing": {
+    "rules": [
+      "All interactive elements (buttons, filters, forms) MUST have data-testid attributes.",
+      "Example: data-testid='portfolio-filter-automotive', data-testid='contact-submit-button'"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Build a 5-section one-page portfolio or multi-page layout: Hero, Portfolio/Gallery, About, Services, Contact.",
+    "Include a basic admin view mockup (route /admin) for uploading photos with category tags.",
+    "Use pure HTML/Tailwind for structural layout (grids, hero) to maintain asymmetrical artistic control.",
+    "Use Shadcn UI ONLY for the Contact Form inputs/buttons and the Admin panel.",
+    "Strictly adhere to the dark theme, using the noise texture overlaid on the body to create a cinematic film grain effect.",
+    "Do NOT use pure #000000; use the specified #0A0A0C background."
+  ]
+}
