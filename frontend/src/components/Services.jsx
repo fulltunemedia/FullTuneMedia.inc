@@ -9,6 +9,8 @@ const services = [
       "A 2-3 hour location shoot tuned to your build. Rolling shots, static hero frames, and detail work — all delivered with cinematic color and the kind of attention your project deserves.",
     price: "From $250 CAD",
     deliver: "25–40 edited frames",
+    image:
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Bike,
@@ -18,24 +20,30 @@ const services = [
       "Built for riders. We map a route, scout angles, and shoot during the golden hour into blue hour. Rider portraits with the bike included at no extra charge.",
     price: "From $220 CAD",
     deliver: "20–35 edited frames",
+    image:
+      "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: Building2,
     name: "Architecture & Spaces",
     sub: "Brutalist · Industrial · Editorial",
     desc:
-      "Hamilton has bones. Whether it&apos;s your shop, your studio, or a structure you&apos;re obsessed with — we shoot it like it matters, because it does.",
+      "Hamilton has bones. Whether it's your shop, your studio, or a structure you're obsessed with — we shoot it like it matters, because it does.",
     price: "From $300 CAD",
     deliver: "30+ edited frames",
+    image:
+      "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     icon: User,
     name: "Portrait Sessions",
     sub: "Step out of your comfort zone",
     desc:
-      "For people who don&apos;t love being in front of a camera but know it&apos;s time. We talk first. We shoot second. The result is you, on a day you actually liked yourself.",
+      "For people who don't love being in front of a camera but know it's time. We talk first. We shoot second. The result is you, on a day you actually liked yourself.",
     price: "From $180 CAD",
     deliver: "15–25 edited frames",
+    image:
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -56,41 +64,60 @@ export default function Services() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
               <div
                 key={s.name}
                 data-testid={`service-card-${s.name.toLowerCase().replace(/\s/g, "-")}`}
-                className="group relative bg-[#0a0a0c] p-8 md:p-12 hover:bg-[#121214] transition-colors duration-500 cursor-default"
+                className="group relative bg-[#121214] border border-white/5 overflow-hidden hover:border-[#FF3B30]/40 transition-colors duration-500"
               >
-                <div className="flex items-start justify-between mb-8">
-                  <div className="w-14 h-14 border border-white/15 flex items-center justify-center group-hover:border-[#FF3B30] group-hover:bg-[#FF3B30]/5 transition-all">
-                    <Icon size={22} className="text-white group-hover:text-[#FF3B30] transition-colors" />
+                {/* Image */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-black">
+                  <img
+                    src={s.image}
+                    alt={s.name}
+                    loading="lazy"
+                    className="zoom-img w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-black/30 to-transparent" />
+                  <div className="absolute top-4 right-4 px-3 py-1.5 bg-black/70 backdrop-blur-md border border-white/10">
+                    <span className="font-stencil text-[10px] uppercase tracking-[0.3em] text-white">
+                      {s.price}
+                    </span>
                   </div>
-                  <span className="font-stencil text-[10px] uppercase tracking-[0.3em] text-zinc-600">
-                    0{i + 1} / 04
-                  </span>
+                  <div className="absolute top-4 left-4 w-12 h-12 border border-white/20 bg-black/50 backdrop-blur-md flex items-center justify-center group-hover:border-[#FF3B30] group-hover:bg-[#FF3B30]/10 transition-all">
+                    <Icon size={20} className="text-white group-hover:text-[#FF3B30] transition-colors" />
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                    <div>
+                      <h3 className="font-display text-3xl md:text-4xl text-white leading-none">
+                        {s.name}
+                      </h3>
+                      <p className="font-stencil text-[10px] uppercase tracking-[0.3em] text-[#FF3B30] mt-2">
+                        {s.sub}
+                      </p>
+                    </div>
+                    <span className="font-stencil text-[10px] uppercase tracking-[0.3em] text-zinc-400 hidden md:block">
+                      0{i + 1} / 04
+                    </span>
+                  </div>
                 </div>
 
-                <h3 className="font-display text-3xl md:text-4xl text-white mb-1">
-                  {s.name}
-                </h3>
-                <p className="font-stencil text-xs uppercase tracking-[0.25em] text-[#FF3B30] mb-6">
-                  {s.sub}
-                </p>
-                <p className="font-body text-zinc-400 leading-relaxed mb-8">
-                  {s.desc}
-                </p>
-
-                <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                  <span className="font-stencil text-xs uppercase tracking-[0.2em] text-zinc-300">
-                    {s.price}
-                  </span>
-                  <span className="font-stencil text-[10px] uppercase tracking-[0.2em] text-zinc-500">
-                    {s.deliver}
-                  </span>
+                {/* Body */}
+                <div className="p-6 md:p-8">
+                  <p className="font-body text-zinc-400 leading-relaxed mb-6">
+                    {s.desc}
+                  </p>
+                  <div className="flex items-center justify-between pt-5 border-t border-white/10">
+                    <span className="font-stencil text-xs uppercase tracking-[0.25em] text-white">
+                      {s.price}
+                    </span>
+                    <span className="font-stencil text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+                      {s.deliver}
+                    </span>
+                  </div>
                 </div>
               </div>
             );
