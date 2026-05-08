@@ -40,7 +40,7 @@ export default function Portfolio() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16 items-end">
           <div className="md:col-span-7">
             <p className="font-stencil text-xs uppercase tracking-[0.3em] text-[#FF3B30] mb-4">
-              § 01 — Selected Work
+              § 01 — Visual Projects
             </p>
             <h2 className="font-display text-5xl md:text-7xl tracking-mega leading-[0.95] text-white">
               A field guide to <em className="italic font-normal text-zinc-400">light, metal,</em>

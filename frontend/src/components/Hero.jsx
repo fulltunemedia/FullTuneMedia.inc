@@ -30,14 +30,10 @@ export default function Hero() {
 
         {/* Headline */}
         <div className="max-w-5xl reveal" style={{ animationDelay: "0.1s" }}>
-          <p className="font-stencil text-xs md:text-sm uppercase tracking-[0.3em] text-[#FF3B30] mb-6">
-            Vol. 01 · Issue 001
-          </p>
           <h1 className="font-display tracking-mega text-[14vw] md:text-[10vw] leading-[0.85] font-bold text-white">
-            Frames that <br />
-            <span className="italic font-normal text-zinc-300">refuse</span> to{" "}
+            Driven <span className="italic font-normal text-zinc-300">By</span>{" "}
             <span className="relative inline-block">
-              blink.
+              Passion
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#FF3B30]" />
             </span>
           </h1>
