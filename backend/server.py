@@ -3,12 +3,14 @@ from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
+import asyncio
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
+import resend
 
 
 ROOT_DIR = Path(__file__).parent
@@ -20,6 +22,12 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
 ADMIN_TOKEN = os.environ.get('ADMIN_TOKEN', 'fulltune-admin-2025')
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
+NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', '')
+
+if RESEND_API_KEY:
+    resend.api_key = RESEND_API_KEY
 
 # Create the main app without a prefix
 app = FastAPI(title="FullTuneMedia API")
@@ -93,7 +101,49 @@ async def create_contact(payload: ContactCreate):
     doc = obj.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.contacts.insert_one(doc)
+    asyncio.create_task(send_inquiry_email(obj))
     return obj
+
+
+async def send_inquiry_email(c: Contact) -> None:
+    if not RESEND_API_KEY or not NOTIFICATION_EMAIL:
+        logger.info("Resend not configured; skipping email notification.")
+        return
+    subject_line = f"New FullTuneMedia inquiry — {c.name}"
+    safe_message = (c.message or "").replace("\n", "<br>")
+    safe_subject = c.subject or "—"
+    html = f"""
+    <div style="font-family: -apple-system, Segoe UI, Roboto, sans-serif; background:#0a0a0c; color:#f8f9fa; padding:24px;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width:640px; margin:0 auto; background:#121214; border:1px solid rgba(255,255,255,0.08);">
+        <tr><td style="padding:24px 28px; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div style="font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:#FF3B30;">FullTuneMedia · New Inquiry</div>
+          <div style="font-size:22px; margin-top:8px; color:#fff;">{c.name}</div>
+          <a href="mailto:{c.email}" style="color:#FF3B30; text-decoration:none; font-size:14px;">{c.email}</a>
+        </td></tr>
+        <tr><td style="padding:20px 28px;">
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#a1a1aa; margin-bottom:6px;">Project Type</div>
+          <div style="color:#f8f9fa; margin-bottom:18px;">{safe_subject}</div>
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#a1a1aa; margin-bottom:6px;">Message</div>
+          <div style="color:#e4e4e7; line-height:1.6; white-space:pre-wrap;">{safe_message}</div>
+        </td></tr>
+        <tr><td style="padding:16px 28px; border-top:1px solid rgba(255,255,255,0.08); font-size:11px; color:#71717a;">
+          Reply directly to this email — it goes to {c.email}.
+        </td></tr>
+      </table>
+    </div>
+    """
+    params = {
+        "from": SENDER_EMAIL,
+        "to": [NOTIFICATION_EMAIL],
+        "reply_to": c.email,
+        "subject": subject_line,
+        "html": html,
+    }
+    try:
+        await asyncio.to_thread(resend.Emails.send, params)
+        logger.info(f"Inquiry email sent for {c.email}")
+    except Exception as e:
+        logger.error(f"Failed to send inquiry email: {e}")
 
 
 @api_router.get("/contact", response_model=List[Contact])
